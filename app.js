@@ -54,6 +54,7 @@ function drawCircle(e) {
 
     let target = e.target;
     target.firstElementChild.classList.add('far', 'fa-circle');
+    
 }
 
 

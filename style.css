@@ -48,3 +48,17 @@ table td {
 body {
     background-color: #333;
 }
+.far.fa-circle {
+    animation: show 1.5s ease-in 1;
+}
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity:0.5;
+    }
+    100% {
+        opacity:1;
+    }
+}
