@@ -13,8 +13,7 @@ field.addEventListener('click', drawCross);
 function drawCross(e) {
 
   let target = e.target;
-  console.log(target);
-  let stopFindingRandomCell;
+  let emptyCellsAmount;
 
   if ( target.tagName === 'DIV' || target.tagName === 'TABLE' || target.tagName === 'I' ||  target.tagName === 'TR' ) {
     return;
@@ -24,17 +23,17 @@ function drawCross(e) {
 
   field.removeEventListener('click', drawCross);
 
-  stopFindingRandomCell = cells.filter(function(cell) {
+  emptyCellsAmount = cells.filter(function(cell) {
     return cell.querySelector('i').classList.length === 0;
   }).length;
 
-  let stop = determineTheWinner();
-  if ( stop ) {
-    stopFindingRandomCell = false;
+  let winnerIsDetermined = determineTheWinner();
+  if ( winnerIsDetermined ) {
+    emptyCellsAmount = false;
     return;
   }
 
-  if ( stopFindingRandomCell ) {
+  if ( emptyCellsAmount ) {
     let randomTd = findRandomCell();
     randomTd.addEventListener('click', drawCircle);
     randomTd.click();
@@ -42,11 +41,11 @@ function drawCross(e) {
     field.addEventListener('click', drawCross);
   }
         
-  stop = determineTheWinner();
-  if ( stop ) {
+  winnerIsDetermined = determineTheWinner();
+  if ( winnerIsDetermined ) {
     field.removeEventListener('click', drawCross);
   } else {
-    if ( !stopFindingRandomCell ) {
+    if ( !emptyCellsAmount ) {
       alert('Draw');
     }
   }
