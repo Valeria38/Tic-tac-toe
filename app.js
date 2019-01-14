@@ -15,11 +15,15 @@ function drawCross(e) {
   let target = e.target;
   let emptyCellsAmount;
 
-  if ( target.tagName === 'DIV' || target.tagName === 'TABLE' || target.tagName === 'I' ||  target.tagName === 'TR' ) {
+  if ( !target.closest('.field__cell') || !field.contains(target) ) {
     return;
   }
 
-  target.querySelector('i').classList.add('fas', 'fa-times');    
+  let trueTarget = target.closest('.field__cell');
+  if ( trueTarget.querySelector('i').classList.contains('fas') || trueTarget.querySelector('i').classList.contains('far') ) {
+    return;
+  }
+  trueTarget.querySelector('i').classList.add('fas', 'fa-times');    
 
   field.removeEventListener('click', drawCross);
 
