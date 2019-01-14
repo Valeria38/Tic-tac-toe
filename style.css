@@ -62,3 +62,15 @@ body {
         opacity:1;
     }
 }
+#result-field {
+    width: 550px;
+    height: 80px;
+    border:3px solid tomato;
+    margin: 10px auto;
+    color:tomato;
+    text-align: center;
+    line-height:80px;
+    font-size:28px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
